@@ -109,13 +109,7 @@ public class WeekBar extends LinearLayout {
      */
     protected int getViewIndexByCalendar(Calendar calendar, int weekStart) {
         int week = calendar.getWeek() + 1;
-        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_SUN) {
-            return week - 1;
-        }
-        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_MON) {
-            return week == CalendarViewDelegate.WEEK_START_WITH_SUN ? 6 : week - 2;
-        }
-        return week == CalendarViewDelegate.WEEK_START_WITH_SAT ? 0 : week;
+        return CalendarUtil.getStartDiff(week, weekStart);
     }
 
     /**
@@ -127,14 +121,7 @@ public class WeekBar extends LinearLayout {
      */
     private String getWeekString(int index, int weekStart) {
         String[] weeks = getContext().getResources().getStringArray(R.array.week_string_array);
-
-        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_SUN) {
-            return weeks[index];
-        }
-        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_MON) {
-            return weeks[index == 6 ? 0 : index + 1];
-        }
-        return weeks[index == 0 ? 6 : index - 1];
+        return weeks[getIndex(index, weekStart)];
     }
 
     @Override
@@ -147,4 +134,52 @@ public class WeekBar extends LinearLayout {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
+    private int getIndex(int index, int weekStart) {
+        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_SUN) {
+            return index;
+        }
+        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_MON) {
+            if (index > 5) {
+                return index - 6;
+            }else {
+                return index + 1;
+            }
+        }
+        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_TUE) {
+            if (index > 4) {
+                return index - 5;
+            }else {
+                return index + 2;
+            }
+        }
+        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_WED) {
+            if (index > 3) {
+                return index - 4;
+            }else {
+                return index + 3;
+            }
+        }
+        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_THU) {
+            if (index > 2) {
+                return index - 3;
+            }else {
+                return index + 4;
+            }
+        }
+        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_FRI) {
+            if (index > 1) {
+                return index - 2;
+            }else {
+                return index + 5;
+            }
+        }
+        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_SAT) {
+            if (index > 0) {
+                return index - 1;
+            }else {
+                return index + 6;
+            }
+        }
+        return 0;
+    }
 }

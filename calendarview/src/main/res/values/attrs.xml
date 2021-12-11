@@ -92,6 +92,10 @@
             <enum name="sun" value="1" />
             <enum name="mon" value="2" />
             <enum name="sat" value="7" />
+            <enum name="tue" value="3" />
+            <enum name="wed" value="4" />
+            <enum name="thu" value="5" />
+            <enum name="fri" value="6" />
         </attr>
 
         <!-- 自定义选择模式 -->

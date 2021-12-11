@@ -207,13 +207,7 @@ public final class CalendarUtil {
         java.util.Calendar date = java.util.Calendar.getInstance();
         date.set(calendar.getYear(), calendar.getMonth() - 1, 1, 12, 0, 0);
         int week = date.get(java.util.Calendar.DAY_OF_WEEK);
-        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_SUN) {
-            return week - 1;
-        }
-        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_MON) {
-            return week == 1 ? 6 : week - weekStart;
-        }
-        return week == CalendarViewDelegate.WEEK_START_WITH_SAT ? 0 : week;
+        return getStartDiff(week, weekStart);
     }
 
 
@@ -231,13 +225,105 @@ public final class CalendarUtil {
         java.util.Calendar date = java.util.Calendar.getInstance();
         date.set(year, month - 1, 1, 12, 0, 0);
         int week = date.get(java.util.Calendar.DAY_OF_WEEK);
+        return getStartDiff(week, weekStart);
+    }
+
+    static int getStartDiff(int week, int weekStart) {
         if (weekStart == CalendarViewDelegate.WEEK_START_WITH_SUN) {
             return week - 1;
         }
         if (weekStart == CalendarViewDelegate.WEEK_START_WITH_MON) {
-            return week == 1 ? 6 : week - weekStart;
+            if (week < 2) {
+                return week + 5;
+            }else {
+                return week - weekStart;
+            }
         }
-        return week == CalendarViewDelegate.WEEK_START_WITH_SAT ? 0 : week;
+        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_TUE) {
+            if (week < 3) {
+                return week + 4;
+            }else {
+                return week - weekStart;
+            }
+        }
+        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_WED) {
+            if (week < 4) {
+                return week + 3;
+            }else {
+                return week - weekStart;
+            }
+        }
+        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_THU) {
+            if (week < 5) {
+                return week + 2;
+            }else {
+                return week - weekStart;
+            }
+        }
+        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_FRI) {
+            if (week < 6) {
+                return week + 1;
+            }else {
+                return week - weekStart;
+            }
+        }
+        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_SAT) {
+            if (week < 7) {
+                return week;
+            }else {
+                return week - weekStart;
+            }
+        }
+        return 0;
+    }
+
+    static int getEndDiff(int week, int weekStart) {
+        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_SUN) {
+            return 7 - week;
+        }
+        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_MON) {
+            if (week < 2) {
+                return 0;
+            }else {
+                return 8 - week;
+            }
+        }
+        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_TUE) {
+            if (week < 3) {
+                return 2 - week;
+            }else {
+                return 9 - week;
+            }
+        }
+        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_WED) {
+            if (week < 4) {
+                return 3 - week;
+            }else {
+                return 10 - week;
+            }
+        }
+        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_THU) {
+            if (week < 5) {
+                return 4 - week;
+            }else {
+                return 11 - week;
+            }
+        }
+        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_FRI) {
+            if (week < 6) {
+                return 5 - week;
+            }else {
+                return 12 - week;
+            }
+        }
+        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_SAT) {
+            if (week < 7) {
+                return 6 - week;
+            }else {
+                return 13 - week;
+            }
+        }
+        return 0;
     }
 
 
@@ -270,13 +356,7 @@ public final class CalendarUtil {
         java.util.Calendar date = java.util.Calendar.getInstance();
         date.set(year, month - 1, day);
         int week = date.get(java.util.Calendar.DAY_OF_WEEK);
-        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_SUN) {
-            return 7 - week;
-        }
-        if (weekStart == CalendarViewDelegate.WEEK_START_WITH_MON) {
-            return week == 1 ? 0 : 7 - week + 1;
-        }
-        return week == 7 ? 6 : 7 - week - 1;
+        return getEndDiff(week, weekStart);
     }
 
     /**
@@ -693,13 +773,7 @@ public final class CalendarUtil {
         java.util.Calendar date = java.util.Calendar.getInstance();
         date.set(year, month - 1, day, 12, 0);//
         int week = date.get(java.util.Calendar.DAY_OF_WEEK);
-        if (weekStart == 1) {
-            return week - 1;
-        }
-        if (weekStart == 2) {
-            return week == 1 ? 6 : week - weekStart;
-        }
-        return week == 7 ? 0 : week;
+        return getStartDiff(week, weekStart);
     }
 
 
@@ -719,13 +793,7 @@ public final class CalendarUtil {
         java.util.Calendar date = java.util.Calendar.getInstance();
         date.set(year, month - 1, day, 12, 0);
         int week = date.get(java.util.Calendar.DAY_OF_WEEK);
-        if (weekStart == 1) {
-            return 7 - week;
-        }
-        if (weekStart == 2) {
-            return week == 1 ? 0 : 7 - week + 1;
-        }
-        return week == 7 ? 6 : 7 - week - 1;
+        return getEndDiff(week, weekStart);
     }
 
 

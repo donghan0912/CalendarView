@@ -44,6 +44,7 @@
         <item>scrollToCurrent</item>
         <item>Limit calendar range</item>
         <item>Show range</item>
+        <item>Test</item>
     </string-array>
 
 
@@ -85,4 +86,15 @@
 
     <string name="simple">Simple style</string>
     <string name="simple_desc">Simple calendar</string>
+
+
+    <string-array name="test_dialog_item">
+        <item>周日为周起始</item>
+        <item>周一为周起始</item>
+        <item>周二为周起始</item>
+        <item>周三为周起始</item>
+        <item>周四为周起始</item>
+        <item>周五为周起始</item>
+        <item>周六为周起始</item>
+    </string-array>
 </resources>

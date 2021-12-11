@@ -1536,6 +1536,35 @@ public class CalendarView extends FrameLayout {
     }
 
     /**
+     * 设置星期二周起始
+     */
+    public void setWeekStarWithTue() {
+        setWeekStart(CalendarViewDelegate.WEEK_START_WITH_TUE);
+    }
+
+    /**
+     * 设置星期三周起始
+     */
+    public void setWeekStarWithWed() {
+        setWeekStart(CalendarViewDelegate.WEEK_START_WITH_WED);
+    }
+
+    /**
+     * 设置星期四周起始
+     */
+    public void setWeekStarWithThu() {
+        setWeekStart(CalendarViewDelegate.WEEK_START_WITH_THU);
+    }
+
+
+    /**
+     * 设置星期五周起始
+     */
+    public void setWeekStarWithFri() {
+        setWeekStart(CalendarViewDelegate.WEEK_START_WITH_FRI);
+    }
+
+    /**
      * 设置周起始
      * CalendarViewDelegate.WEEK_START_WITH_SUN
      * CalendarViewDelegate.WEEK_START_WITH_MON
@@ -1544,10 +1573,10 @@ public class CalendarView extends FrameLayout {
      * @param weekStart 周起始
      */
     private void setWeekStart(int weekStart) {
-        if (weekStart != CalendarViewDelegate.WEEK_START_WITH_SUN &&
-                weekStart != CalendarViewDelegate.WEEK_START_WITH_MON &&
-                weekStart != CalendarViewDelegate.WEEK_START_WITH_SAT)
-            return;
+//        if (weekStart != CalendarViewDelegate.WEEK_START_WITH_SUN &&
+//                weekStart != CalendarViewDelegate.WEEK_START_WITH_MON &&
+//                weekStart != CalendarViewDelegate.WEEK_START_WITH_SAT)
+//            return;
         if (weekStart == mDelegate.getWeekStart())
             return;
         mDelegate.setWeekStart(weekStart);

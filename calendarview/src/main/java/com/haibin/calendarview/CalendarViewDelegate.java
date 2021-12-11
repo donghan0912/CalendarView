@@ -46,6 +46,26 @@ final class CalendarViewDelegate {
     static final int WEEK_START_WITH_MON = 2;
 
     /**
+     * 周起始：周二
+     */
+    static final int WEEK_START_WITH_TUE = 3;
+
+    /**
+     * 周起始：周三
+     */
+    static final int WEEK_START_WITH_WED = 4;
+
+    /**
+     * 周起始：周四
+     */
+    static final int WEEK_START_WITH_THU = 5;
+
+    /**
+     * 周起始：周五
+     */
+    static final int WEEK_START_WITH_FRI = 6;
+
+    /**
      * 周起始：周六
      */
     static final int WEEK_START_WITH_SAT = 7;

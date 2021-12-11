@@ -151,6 +151,9 @@ public class MainActivity extends BaseActivity implements
                                                 mCalendarView.getMaxRangeCalendar()))
                                         .show();
                                 break;
+                            case 7:
+                                TestActivity.show(MainActivity.this);
+                                break;
                         }
                     }
                 };

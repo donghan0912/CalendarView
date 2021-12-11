@@ -44,10 +44,10 @@
     <com.haibin.calendarview.CalendarLayout
         android:id="@+id/calendar_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="#fff"
         android:orientation="vertical"
-        app:calendar_show_mode="only_month_view"
+        app:calendar_show_mode="only_week_view"
         app:default_status="expand">
 
         <com.haibin.calendarview.CalendarView
@@ -68,7 +68,6 @@
 
 
             app:month_view_scrollable="false"
-
             app:month_view_show_mode="mode_fix"
             app:week_bar_height="46dp"
 
@@ -77,5 +76,12 @@
             app:year_view_scrollable="false" />
 
     </com.haibin.calendarview.CalendarLayout>
+
+    <Button
+        android:layout_marginTop="30dp"
+        android:id="@+id/test"
+        android:text="测试"
+        android:layout_width="100dp"
+        android:layout_height="70dp"/>
 
 </LinearLayout>
